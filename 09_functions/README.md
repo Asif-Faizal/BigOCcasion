@@ -107,14 +107,14 @@ graph TD;
     subgraph "Main Program"
         A[Start] --> B[CALL printMessage];
         B --> C[CALL add(10, 25)];
-        C --> D{Display integer sum};
+        C --> D["Display integer sum"];
         D --> E[CALL add(5.5, 4.4)];
-        E --> F{Display double sum};
+        E --> F["Display double sum"];
         F --> G[End];
     end
 
     subgraph "Function: printMessage"
-        P1[Begin] --> P2{Display message};
+        P1[Begin] --> P2["Display message"];
         P2 --> P3[Return];
     end
 

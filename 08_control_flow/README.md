@@ -117,7 +117,7 @@ graph TD;
     C -- False --> H[End];
     C -- True --> D{i == 5?};
     D -- True --> G[BREAK];
-    D -- False --> E{Display "i = " + i};
+    D -- False --> E["Display: i = " + i];
     E --> F[i++ GOTO C];
     G --> H;
 ```
@@ -131,7 +131,7 @@ graph TD;
     C -- False --> H[End];
     C -- True --> D{j is even?};
     D -- True --> G[CONTINUE GOTO F];
-    D -- False --> E{Display "j = " + j};
+    D -- False --> E["Display: j = " + j];
     E --> F[j++ GOTO C];
     G --> F;
 ```

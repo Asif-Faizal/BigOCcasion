@@ -161,7 +161,7 @@ END
 graph TD;
     A[Start] --> B[i = 1];
     B --> C{i <= 5?};
-    C -- True --> D{Display "i = " + i};
+    C -- True --> D["Display: i = " + i];
     D --> E[i++ GOTO C];
     C -- False --> F[End];
 ```
@@ -172,7 +172,7 @@ graph TD;
 graph TD;
     A[Start] --> B[j = 3];
     B --> C{j > 0?};
-    C -- True --> D{Display "j = " + j};
+    C -- True --> D["Display: j = " + j];
     D --> E[j-- GOTO C];
     C -- False --> F[End];
 ```
@@ -182,7 +182,7 @@ graph TD;
 ```mermaid
 graph TD;
     A[Start] --> B[k = 5];
-    B --> C{Display "k = " + k};
+    B --> C["Display: k = " + k];
     C --> D{k < 3?};
     D -- True --> C;
     D -- False --> E[End];

@@ -122,7 +122,7 @@ END FUNCTION
 
 ```mermaid
 graph TD;
-    A[Start factorial(n)] --> B{n <= 1?};
+    A["Start factorial(n)"] --> B{n <= 1?};
     B -- True --> C[Return 1];
     B -- False --> D["result = n * factorial(n-1)"];
     D --> E[Return result];
