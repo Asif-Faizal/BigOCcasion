@@ -93,7 +93,7 @@ END
 
 ```mermaid
 graph TD;
-    A[Start] --> B[Declare & Initialize all variables<br>(integerVar, floatVar, charVar, boolVar, etc.)];
+    A[Start] --> B["Declare & Initialize all variables<br>(integerVar, floatVar, charVar, boolVar, etc.)"];
     B --> C[/Display value & size of integerVar/];
     C --> D[/Display value & size of shortVar/];
     D --> E[/...and so on for other variables.../];

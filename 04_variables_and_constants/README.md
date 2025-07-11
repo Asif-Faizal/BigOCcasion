@@ -102,13 +102,13 @@ END
 
 ```mermaid
 graph TD;
-    A[Start] --> B[Declare & Initialize<br>score, temperature, grade];
-    B --> C{Display initial values};
+    A[Start] --> B["Declare & Initialize<br>score, temperature, grade"];
+    B --> C[/Display initial values/];
     C --> D[Update score to 100];
-    D --> E{Display updated score};
-    E --> F{Display globalVar};
+    D --> E[/Display updated score/];
+    E --> F[/Display globalVar/];
     F --> G[Update globalVar to 20];
-    G --> H{Display updated globalVar};
-    H --> I{Display constants};
+    G --> H[/Display updated globalVar/];
+    H --> I[/Display constants/];
     I --> J[End];
 ```

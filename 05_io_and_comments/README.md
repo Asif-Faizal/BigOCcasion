@@ -137,13 +137,13 @@ END
 ```mermaid
 graph TD;
     subgraph "Program"
-        A[Start] --> B[Declare variables<br>age, weight, initial, fullName];
+        A[Start] --> B["Declare variables<br>age, weight, initial, fullName"];
         B --> C[/Get user input for age/];
         C --> D[/Get user input for weight/];
         D --> E[/Get user input for initial/];
         E --> F[Clear input buffer];
         F --> G[/Get user input for fullName/];
-        G --> H{Display all collected details};
+        G --> H[/Display all collected details/];
         H --> I[End];
     end
 ```
