@@ -225,13 +225,11 @@ A graph is a collection of nodes (or vertices) connected by edges. The connectio
 * **Common Uses**: Social networks, mapping and navigation systems, computer networks.
 
 ```mermaid
-graph TD
-    subgraph "Undirected Graph"
-        A -- B;
-        B -- C;
-        A -- C;
-        A -- D;
-    end
+graph LR
+    A---B
+    B---C
+    A---C
+    A---D
 ```
 
 **Pseudocode Traversal (Breadth-First Search):**
