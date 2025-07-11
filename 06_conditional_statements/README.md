@@ -173,33 +173,33 @@ END
 graph TD;
     A[Start] --> B[/Get age and dayOfWeek/];
     B --> C{age >= 18?};
-    C -- True --> D{Display "Eligible to vote"};
+    C -- True --> D["Display: Eligible to vote"];
     C -- False --> E[Continue];
     D --> E;
     
     E --> F{age % 2 == 0?};
-    F -- True --> G{Display "age is even"};
-    F -- False --> H{Display "age is odd"};
+    F -- True --> G["Display: age is even"];
+    F -- False --> H["Display: age is odd"];
     G --> I[Continue];
     H --> I;
 
     I --> J{age < 13?};
-    J -- True --> K{Display "Child"};
+    J -- True --> K["Display: Child"];
     J -- False --> L{age < 18?};
-    L -- True --> M{Display "Teenager"};
+    L -- True --> M["Display: Teenager"];
     L -- False --> N{age < 65?};
-    N -- True --> O{Display "Adult"};
-    N -- False --> P{Display "Senior"};
+    N -- True --> O["Display: Adult"];
+    N -- False --> P["Display: Senior"];
     K --> Q[Continue];
     M --> Q;
     O --> Q;
     P --> Q;
 
     Q --> R{dayOfWeek?};
-    R -- 1 --> S{Display "Sunday"};
-    R -- 2 --> T{Display "Monday"};
-    R -- ... --> U[...]
-    R -- Default --> V{Display "Invalid"};
+    R -- 1 --> S["Display: Sunday"];
+    R -- 2 --> T["Display: Monday"];
+    R -- ... --> U[...];
+    R -- Default --> V["Display: Invalid"];
     S --> W[End];
     T --> W;
     U --> W;
