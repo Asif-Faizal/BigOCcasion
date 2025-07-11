@@ -105,10 +105,10 @@ END FUNCTION
 ```mermaid
 graph TD;
     subgraph "Main Program"
-        A[Start] --> B[CALL printMessage];
-        B --> C[CALL add(10, 25)];
+        A[Start] --> B["CALL printMessage"];
+        B --> C["CALL add(10, 25)"];
         C --> D["Display integer sum"];
-        D --> E[CALL add(5.5, 4.4)];
+        D --> E["CALL add(5.5, 4.4)"];
         E --> F["Display double sum"];
         F --> G[End];
     end
@@ -119,8 +119,8 @@ graph TD;
     end
 
     subgraph "Function: add (Overloaded)"
-        ADD_I1[Begin (int)] --> ADD_I2[Return a + b];
-        ADD_D1[Begin (double)] --> ADD_D2[Return a + b];
+        ADD_I1["Begin (int)"] --> ADD_I2["Return a + b"];
+        ADD_D1["Begin (double)"] --> ADD_D2["Return a + b"];
     end
 
     B --> P1;
