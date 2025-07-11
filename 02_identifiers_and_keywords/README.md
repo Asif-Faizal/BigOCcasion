@@ -76,7 +76,7 @@ END
 graph TD;
     A[Start] --> B[Declare marks = 85];
     B --> C[Declare percentage = 91.5f];
-    C --> D{Display marks};
-    D --> E{Display formatted percentage};
+    C --> D[/Display marks/];
+    D --> E[/Display formatted percentage/];
     E --> F[End];
 ```

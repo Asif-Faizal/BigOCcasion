@@ -30,6 +30,6 @@ END
 
 ```mermaid
 graph TD;
-    A[Start] --> B[Display "Hello, World!"];
+    A[Start] --> B[/Display Hello, World!/];
     B --> C[End];
 ```
