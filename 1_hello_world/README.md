@@ -1,19 +1,19 @@
-# 1. Hello World in C
+# 1. Hello World in C++
 
-This project is a simple "Hello, World!" program written in the C programming language.
+This project is a simple "Hello, World!" program written in the C++ programming language.
 
 ## Code Explanation
 
-```c
-#include <stdio.h>
+```cpp
+#include <iostream>
 
 int main() {
-    printf("Hello, World!\\n");
+    std::cout << "Hello, World!" << std::endl;
     return 0;
 }
 ```
 
-* `#include <stdio.h>`: This line includes the standard input/output library, which provides functions like `printf`.
+* `#include <iostream>`: This line includes the input/output stream library, which provides objects like `std::cout` for screen output.
 * `int main()`: This is the main function where program execution begins.
-* `printf("Hello, World!\\n");`: This line uses the `printf` function to print the string "Hello, World!" to the console, followed by a newline character `\n`.
+* `std::cout << "Hello, World!" << std::endl;`: This line uses the `std::cout` object to send the string "Hello, World!" to the console. The `<<` operator is the stream insertion operator. `std::endl` inserts a newline character and flushes the stream.
 * `return 0;`: This line indicates that the program has executed successfully.

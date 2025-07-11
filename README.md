@@ -1,8 +1,8 @@
 # 🎊 BigOCcasion
 
-> Because learning DSA in C is not just an event... it's a **BigOCcasion**.
+> Because learning DSA in C++ is not just an event... it's a **BigOCcasion**.
 
-Welcome to the ultimate deep dive into **Data Structures and Algorithms** using the C programming language!  
+Welcome to the ultimate deep dive into **Data Structures and Algorithms** using the C++ programming language!  
 This is where we manually `malloc()` our future, `free()` our fears, and try not to `segfault()` our dreams.
 
 ## 🧠 What’s Inside?

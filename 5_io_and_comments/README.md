@@ -1,127 +1,103 @@
-# 5. C I/O (scanf, printf) and Comments
+# 5. C++ I/O (`cin`, `cout`) and Comments
 
-This section explains how to perform basic input and output operations in C using the `scanf` and `printf` functions, and how to properly use comments to make your code more readable.
+This section explains how to perform basic input and output operations in C++ using the I/O stream objects `std::cin` and `std::cout`, and how to use comments.
 
 ## Comments
 
-Comments are notes within the code that are ignored by the compiler. They are used to explain what the code does, making it easier for others (and yourself) to understand.
+Comments are notes within the code that are ignored by the compiler. They are used to explain what the code does. The syntax is identical to C.
 
-There are two types of comments in C:
+1. **Single-line comments**: Start with `//`.
+2. **Multi-line comments**: Start with `/*` and end with `*/`.
 
-1. **Single-line comments**: Start with `//`. Everything from `//` to the end of the line is a comment.
+## Output: `std::cout`
 
-    ```c
-    // This is a single-line comment.
-    int x = 10;
-    ```
+The `std::cout` object ("character output stream") is used to send formatted output to the screen. It is used with the stream insertion operator `<<`.
 
-2. **Multi-line comments**: Start with `/*` and end with `*/`. They can span multiple lines.
+- It can print simple strings: `std::cout << "Hello!";`
+- It can print variables and chain multiple outputs together.
+- `std::endl` is a manipulator that inserts a newline and flushes the output buffer.
 
-    ```c
-    /*
-      This is a multi-line comment.
-      It can be used to write longer descriptions.
-    */
-    ```
+```cpp
+#include <iostream>
+#include <iomanip> // Required for manipulators like setprecision
 
-## Output: `printf()`
-
-The `printf()` function ("print formatted") is used to send formatted output to the screen.
-
-- It can print simple strings: `printf("Hello!");`
-- It can print the values of variables using format specifiers (`%d` for integers, `%f` for floats, `%c` for chars, `%s` for strings).
-
-```c
 int age = 25;
-printf("My age is: %d\n", age); // The \n adds a newline
+float weight = 68.5f;
+std::cout << "My age is: " << age << std::endl;
+// std::fixed and std::setprecision(2) formats the float to 2 decimal places
+std::cout << "Weight: " << std::fixed << std::setprecision(2) << weight << std::endl;
 ```
 
-## Input: `scanf()`
+## Input: `std::cin`
 
-The `scanf()` function is used to read formatted input from the user. It requires two things:
+The `std::cin` object ("character input stream") is used to read formatted input from the user. It uses the stream extraction operator `>>`.
 
-1. A format specifier to tell it what kind of data to expect.
-2. The memory address of the variable where it should store the data. We use the ampersand `&` to get the address of a variable.
+```cpp
+#include <iostream>
 
-```c
 int age;
-printf("Enter your age: ");
-scanf("%d", &age); // Reads an integer and stores it in the 'age' variable
+std::cout << "Enter your age: ";
+std::cin >> age; // Reads an integer and stores it in the 'age' variable
 ```
 
-### Important `scanf` Considerations
+### Important `cin` Considerations
 
-- **The `&` is crucial**: Forgetting the `&` is a common and serious error. The only common exception is when reading a string into a character array, as the array's name is already an address.
-- **The newline issue**: `scanf` can leave a newline character `\n` in the input buffer after reading a number. This can cause the next `scanf` (especially for a character) to fail. A common fix is to put a space before the format specifier, like `scanf(" %c", &myChar);`, which consumes any leftover whitespace.
+- **Type Safety**: Unlike `scanf`, `cin` is type-safe. You don't need format specifiers, and it's much harder to cause a crash by passing the wrong type.
+- **The Newline Issue**: The `>>` operator often leaves a newline character `\n` in the input buffer. This can cause the next input operation, especially if it's line-based, to fail.
 
-## Full Code Example from `main.c`
+## Reading Full Lines with `std::getline`
 
-```c
-#include <stdio.h>
+When you need to read input that may contain spaces (like a full name), the `>>` operator is unsuitable because it stops at the first whitespace. The correct tool is `std::getline`.
+
+```cpp
+#include <iostream>
+#include <string>
+#include <limits> // Required for std::numeric_limits
+
+std::string fullName;
+std::cout << "Enter your full name: ";
+
+// This is a critical step to fix the newline issue!
+// It tells cin to ignore any characters left in the buffer until it finds a newline.
+std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
+
+// Now, getline will work as expected.
+std::getline(std::cin, fullName);
+```
+
+## Full Code Example from `main.cpp`
+
+```cpp
+#include <iostream>
+#include <string>
+#include <iomanip>
+#include <limits>
 
 int main() {
-    // Variable declarations
     int age;
     float weight;
     char initial;
-    char fullName[50]; 
+    std::string fullName;
 
-    // Taking user input
-    printf("Enter your age: ");
-    scanf("%d", &age);
+    std::cout << "Enter your age: ";
+    std::cin >> age;
 
-    printf("Enter your weight (in kg): ");
-    scanf("%f", &weight);
+    std::cout << "Enter your weight (in kg): ";
+    std::cin >> weight;
 
-    printf("Enter your first initial: ");
-    scanf(" %c", &initial);
+    std::cout << "Enter your first initial: ";
+    std::cin >> initial;
 
-    printf("Enter your full name: ");
-    scanf("%s", fullName);
+    std::cout << "Enter your full name: ";
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::getline(std::cin, fullName);
 
-    // Displaying the collected data
-    printf("\n--- Your Details ---\n");
-    printf("Full Name: %s\n", fullName);
-    printf("Initial: %c\n", initial);
-    printf("Age: %d years old\n", age);
-    printf("Weight: %.2f kg\n", weight);
+    std::cout << "\n--- Your Details ---" << std::endl;
+    std::cout << "Full Name: " << fullName << std::endl;
+    std::cout << "Initial: " << initial << std::endl;
+    std::cout << "Age: " << age << " years old" << std::endl;
+    std::cout << "Weight: " << std::fixed << std::setprecision(2) << weight << " kg" << std::endl;
 
     return 0;
 }
-```
-
-## Common `scanf` Pitfalls
-
-The outputs you observed highlight two very common issues with `scanf`.
-
-1. **Invalid Input**: If you provide input that doesn't match the format specifier (e.g., entering `w` for `%d`), `scanf` will fail and leave the invalid input in the buffer. This can cause a chain reaction of failures for subsequent `scanf` calls. Proper error handling (checking the return value of `scanf`) is needed for robust programs.
-
-2. **`%s` Stops at Whitespace**: The `%s` specifier reads text until it finds the first whitespace character (like a space or newline). This makes it unsuitable for reading input that might contain spaces, such as a full name.
-
-## A Better Alternative for Strings: `fgets`
-
-To reliably read a full line of text (including spaces), the `fgets` function is a safer and more predictable choice.
-
-```c
-#include <string.h> // Required for strcspn
-
-char fullName[50];
-fgets(fullName, sizeof(fullName), stdin);
-
-// fgets keeps the newline, so we can remove it
-fullName[strcspn(fullName, "\n")] = 0;
-```
-
-- `fgets(buffer, size, stream)` reads a line from the `stream` (e.g., `stdin` for keyboard) and stores it in the `buffer`.
-- It stops when it has read `size - 1` characters, or when it reads a newline `\n`.
-- Unlike `scanf`, it's safe from buffer overflows and handles spaces correctly.
-
-```c
-#include <string.h>
-
-char fullName[50];
-fgets(fullName, sizeof(fullName), stdin);
-
-// fgets keeps the newline, so we can remove it
-fullName[strcspn(fullName, "\n")] = 0;
 ```

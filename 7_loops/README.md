@@ -1,14 +1,14 @@
-# 7. C Looping Statements
+# 7. C++ Looping Statements
 
-Loops are used to execute a block of code repeatedly as long as a certain condition is met. They are fundamental for automating repetitive tasks.
+Loops are used to execute a block of code repeatedly as long as a certain condition is met. They are fundamental for automating repetitive tasks. The traditional `for`, `while`, and `do-while` loops are syntactically identical to C.
 
 ## 1. The `for` Loop
 
-The `for` loop is ideal when you know how many times you want the loop to run. It consists of three parts: initialization, condition, and update (increment/decrement).
+The `for` loop is ideal when you know how many times you want the loop to run. It consists of three parts: initialization, condition, and update.
 
 **Syntax:**
 
-```c
+```cpp
 for (initialization; condition; update) {
     // Code to execute
 }
@@ -16,42 +16,41 @@ for (initialization; condition; update) {
 
 **Example:** This loop runs 5 times.
 
-```c
+```cpp
 for (int i = 1; i <= 5; i++) {
-    printf("   i = %d\n", i);
+    std::cout << "   i = " << i << std::endl;
 }
 ```
 
 ## 2. The `while` Loop
 
-The `while` loop repeatedly executes a block of code as long as a given condition remains true. It is an "entry-controlled" loop, meaning the condition is checked *before* the loop body is executed.
+The `while` loop repeatedly executes a block of code as long as a given condition remains true. It is an "entry-controlled" loop.
 
 **Syntax:**
 
-```c
+```cpp
 while (condition) {
     // Code to execute
-    // (must include something that can change the condition)
 }
 ```
 
 **Example:**
 
-```c
+```cpp
 int j = 3;
 while (j > 0) {
-    printf("   j = %d\n", j);
+    std::cout << "   j = " << j << std::endl;
     j--;
 }
 ```
 
 ## 3. The `do-while` Loop
 
-The `do-while` loop is an "exit-controlled" loop. It is similar to the `while` loop, but the condition is checked *after* the loop body is executed. This guarantees that the loop will run at least once.
+The `do-while` loop is an "exit-controlled" loop. It guarantees that the loop will run at least once.
 
 **Syntax:**
 
-```c
+```cpp
 do {
     // Code to execute
 } while (condition);
@@ -59,37 +58,49 @@ do {
 
 **Example:** This loop runs once, even though the condition `k < 3` is initially false.
 
-```c
+```cpp
 int k = 5;
 do {
-    printf("   This runs at least once. k = %d\n", k);
+    std::cout << "   This runs at least once. k = " << k << std::endl;
 } while (k < 3);
 ```
 
-## 4. Nested Loops
+## 4. Range-Based `for` Loop (C++11 and later)
 
-You can place one loop inside another. This is called a nested loop and is commonly used for tasks like iterating through a 2D grid or printing patterns.
+This is a major C++ enhancement for loops. It provides a much cleaner and safer way to iterate over all elements in a container (like an array, vector, or map).
 
-**Example:** The outer loop controls the rows, and the inner loop controls the columns.
+**Syntax:**
 
-```c
-for (int row = 1; row <= 3; row++) {
-    for (int col = 1; col <= 3; col++) {
-        printf("   (row %d, col %d)\n", row, col);
-    }
+```cpp
+for (declaration : range_expression) {
+    // Code to execute for each element
 }
 ```
 
-## 5. Loop Control Statements
+**Example:**
 
-You can change a loop's execution from its normal sequence using control statements.
+```cpp
+#include <vector>
+#include <iostream>
 
-- **`break`**: Immediately terminates the innermost loop it is in. Execution resumes at the statement following the loop.
-- **`continue`**: Skips the rest of the current iteration and proceeds to the next iteration of the loop.
+std::vector<int> numbers = {10, 20, 30, 40, 50};
+for (int number : numbers) {
+    std::cout << "   Value: " << number << std::endl;
+}
+```
 
-**Example:** This loop processes only odd numbers and stops completely once a number greater than 7 is reached.
+This is generally preferred over a traditional `for` loop when you just need to access each element of a collection sequentially.
 
-```c
+## 5. Loop Control Statements (`break` and `continue`)
+
+These statements work identically in C++ to change a loop's execution.
+
+- **`break`**: Immediately terminates the innermost loop.
+- **`continue`**: Skips the rest of the current iteration and proceeds to the next.
+
+**Example:**
+
+```cpp
 for (int num = 1; num <= 10; num++) {
     if (num % 2 == 0) {
         continue; // Skip even numbers
@@ -97,41 +108,17 @@ for (int num = 1; num <= 10; num++) {
     if (num > 7) {
         break; // Exit the loop
     }
-    printf("   Processed odd number: %d\n", num);
+    std::cout << "   Processed odd number: " << num << std::endl;
 }
 ```
 
 ---
 
-## `for` vs. `while` vs. `do-while`
+## `for` vs. `while` vs. `do-while` vs. Range-Based `for`
 
-| Feature | `for` Loop | `while` Loop | `do-while` Loop |
-| :--- | :--- | :--- | :--- |
-| **Primary Use Case** | When the number of iterations is known beforehand. | When the loop depends on a condition not based on a simple counter. | When the loop body **must** be executed at least once. |
-| **Structure** | Combines initialization, condition, and update in one line. | Separates initialization, condition, and update. | Separates initialization, condition, and update. |
-| **Condition Check**| At the **beginning** of each iteration (Entry-Controlled). | At the **beginning** of each iteration (Entry-Controlled). | At the **end** of each iteration (Exit-Controlled). |
-| **Guaranteed Execution?** | No. If the condition is initially false, it never runs. | No. If the condition is initially false, it never runs. | Yes. Always runs at least once. |
-
-## Nesting `while` and `do-while` Loops
-
-Nesting is not specific to `for` loops. You can nest any loop inside any other loop. The choice depends on the logic you need. For example, you might use a nested `while` loop to handle user input for a menu until they make a valid choice, all within a larger game loop.
-
-**Nested `while` Loop Example:**
-
-```c
-// Pseudocode for a simple game menu
-while (gameIsRunning) {
-    char menuChoice = ' ';
-    while (menuChoice != 'p' && menuChoice != 'q') {
-        // Inner loop keeps asking until input is valid
-        printf("Enter 'p' to play or 'q' to quit: ");
-        scanf(" %c", &menuChoice);
-    }
-
-    if (menuChoice == 'p') {
-        // ... play the game ...
-    } else {
-        gameIsRunning = false; // Exit the outer loop
-    }
-}
-```
+| Feature | `for` Loop | `while` Loop | `do-while` Loop | Range-Based `for` |
+| :--- | :--- | :--- | :--- | :--- |
+| **Primary Use Case** | When iteration count is known; index-based access. | When the loop depends on a complex condition. | When the loop must run at least once. | Iterating over every element of a container. |
+| **Condition Check**| Entry-Controlled | Entry-Controlled | Exit-Controlled | (Handled internally) |
+| **Safety** | Risk of off-by-one errors with index. | Risk of infinite loops if condition is not updated. | Risk of infinite loops. | Safest; no manual index or condition management. |
+| **Readability** | Good for simple counting loops. | Good for condition-based loops. | Clear when "at least once" logic is needed. | Excellent for simple iteration. |
