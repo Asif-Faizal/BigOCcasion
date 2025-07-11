@@ -88,7 +88,7 @@ A linked list consists of nodes where each node contains data and a pointer to t
 
 ```mermaid
 graph LR
-    A[Data | Next] --> B[Data | Next] --> C[Data | null];
+    A["Data | Next"] --> B["Data | Next"] --> C["Data | null"];
     subgraph Legend
         direction LR
         D(Node)
@@ -227,10 +227,10 @@ A graph is a collection of nodes (or vertices) connected by edges. The connectio
 ```mermaid
 graph TD
     subgraph "Undirected Graph"
-        A -- B
-        B -- C
-        A -- C
-        A -- D
+        A -- B;
+        B -- C;
+        A -- C;
+        A -- D;
     end
 ```
 
@@ -274,7 +274,7 @@ graph TD
         direction LR
         A("Start") -- "Start/Exit (Oval)" --> B
         C[/Input a/] -- "Input/Output (Parallelogram)" --> D
-        E[name = "Tony Stark"] -- "Process (Rectangle)" --> F
+        E["name = &quot;Tony Stark&quot;"] -- "Process (Rectangle)" --> F
         G{isEven?} -- "Decision (Diamond)" --> H
     end
     style B fill:none,stroke:none
@@ -318,8 +318,8 @@ END
 graph TD
     A("Start") --> B[/Read number/];
     B --> C{number % 2 == 0?};
-    C -- "True" --> D[/"Print 'Even'"/];
-    C -- "False" --> E[/"Print 'Odd'"/];
+    C -- "True" --> D["/Print 'Even'/"];
+    C -- "False" --> E["/Print 'Odd'/"];
     D --> F("Exit");
     E --> F;
 ```
