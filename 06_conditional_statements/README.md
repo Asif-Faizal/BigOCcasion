@@ -131,3 +131,77 @@ if (auto it = errorMap.find(1); it != errorMap.end()) {
     std::cout << "No error." << std::endl;
 }
 ```
+
+## Pseudocode
+
+```xml
+BEGIN
+    PROMPT for user's age and a day of the week number
+
+    // Simple if
+    IF age >= 18 THEN PRINT "You are eligible to vote."
+
+    // if-else
+    IF age is even THEN PRINT "age is even"
+    ELSE PRINT "age is odd"
+
+    // if-else if-else
+    IF age < 13 THEN PRINT "You are a child."
+    ELSE IF age < 18 THEN PRINT "You are a teenager."
+    ELSE IF age < 65 THEN PRINT "You are an adult."
+    ELSE PRINT "You are a senior citizen."
+
+    // Nested if
+    IF age >= 18 THEN
+        IF age < 21 THEN PRINT "You are an adult, but not yet 21."
+    END IF
+
+    // Switch
+    CASE dayOfWeek
+        1: PRINT "It's Sunday."
+        2: PRINT "It's Monday."
+        ...
+        7: PRINT "It's Saturday."
+        DEFAULT: PRINT "Invalid day number."
+    END CASE
+END
+```
+
+## Flowchart
+
+```mermaid
+graph TD;
+    A[Start] --> B[/Get age and dayOfWeek/];
+    B --> C{age >= 18?};
+    C -- True --> D{Display "Eligible to vote"};
+    C -- False --> E[Continue];
+    D --> E;
+    
+    E --> F{age % 2 == 0?};
+    F -- True --> G{Display "age is even"};
+    F -- False --> H{Display "age is odd"};
+    G --> I[Continue];
+    H --> I;
+
+    I --> J{age < 13?};
+    J -- True --> K{Display "Child"};
+    J -- False --> L{age < 18?};
+    L -- True --> M{Display "Teenager"};
+    L -- False --> N{age < 65?};
+    N -- True --> O{Display "Adult"};
+    N -- False --> P{Display "Senior"};
+    K --> Q[Continue];
+    M --> Q;
+    O --> Q;
+    P --> Q;
+
+    Q --> R{dayOfWeek?};
+    R -- 1 --> S{Display "Sunday"};
+    R -- 2 --> T{Display "Monday"};
+    R -- ... --> U[...]
+    R -- Default --> V{Display "Invalid"};
+    S --> W[End];
+    T --> W;
+    U --> W;
+    V --> W;
+```

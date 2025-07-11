@@ -74,3 +74,57 @@ A recursive function is one that calls itself. The logic is the same as in C, re
 ## 4. `inline` Functions
 
 The `inline` keyword is a **hint** to the compiler to replace a function call with its body, eliminating call overhead. Modern compilers are excellent at making their own inlining decisions, so `inline` is less about performance and more about semantics: it's required for function definitions that appear in header files (to prevent linker errors).
+
+## Pseudocode
+
+```xml
+BEGIN
+    DECLARE num = 10
+    PRINT "Original num: " + num
+
+    // Pass-by-Reference
+    CALL canChangeWithReference(num)
+    PRINT "After by-reference call: " + num
+
+    // Reset num
+    num = 10
+    
+    // Pass-by-Pointer
+    CALL canChangeWithPointer(address of num)
+    PRINT "After by-pointer call: " + num
+
+    // Recursive Function
+    factorial_of_5 = CALL constexpr_factorial(5)
+    PRINT "Factorial of 5 is " + factorial_of_5
+END
+
+// Function Definitions
+FUNCTION canChangeWithReference(REFERENCE_TO_INTEGER x_ref):
+    x_ref = 100
+END FUNCTION
+
+FUNCTION canChangeWithPointer(POINTER_TO_INTEGER x_ptr):
+    value_at(x_ptr) = 100
+END FUNCTION
+
+FUNCTION constexpr_factorial(INTEGER n):
+    IF n <= 1 THEN
+        RETURN 1
+    ELSE
+        RETURN n * CALL constexpr_factorial(n - 1)
+    END IF
+END FUNCTION
+```
+
+## Flowchart
+
+### Recursive Factorial Function
+
+```mermaid
+graph TD;
+    A[Start factorial(n)] --> B{n <= 1?};
+    B -- True --> C[Return 1];
+    B -- False --> D["result = n * factorial(n-1)"];
+    D --> E[Return result];
+    E --> A;
+```

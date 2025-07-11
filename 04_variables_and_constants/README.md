@@ -70,3 +70,45 @@ This is a legacy method from C. It's a preprocessor macro that replaces every oc
 | **C++ Features** | Can be pointers, references, class members, etc. `constexpr` enables compile-time computation. | Cannot be used with many C++ features. |
 
 **Conclusion**: Always prefer `const` or `constexpr` over `#define` in C++. Use `constexpr` for values that can be known at compile time, and `const` for values that are determined at runtime.
+
+## Pseudocode
+
+```xml
+BEGIN
+    DECLARE globalVar = 10
+
+    // In main function
+    DECLARE INTEGER score = 95
+    DECLARE FLOAT temperature = 25.5f
+    DECLARE CHARACTER grade = 'A'
+
+    PRINT initial values of score, temperature, grade
+    
+    score = 100 // Update score
+    PRINT updated value of score
+
+    PRINT value of globalVar
+    globalVar = 20 // Update globalVar
+    PRINT updated value of globalVar
+
+    // Constants
+    DECLARE CONSTANT FLOAT GST_RATE = 0.18f
+    DECLARE CONSTEXPR INTEGER SIDES_OF_SQUARE = 4
+    PRINT value of constants
+END
+```
+
+## Flowchart
+
+```mermaid
+graph TD;
+    A[Start] --> B[Declare & Initialize<br>score, temperature, grade];
+    B --> C{Display initial values};
+    C --> D[Update score to 100];
+    D --> E{Display updated score};
+    E --> F{Display globalVar};
+    F --> G[Update globalVar to 20];
+    G --> H{Display updated globalVar};
+    H --> I{Display constants};
+    I --> J[End];
+```

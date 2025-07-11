@@ -69,3 +69,61 @@ int main() {
 ```
 
 This allows you to create a more intuitive interface, as you don't need different names (like `add_int` and `add_double`) for functions that perform the same logical operation on different data types.
+
+## Pseudocode
+
+```xml
+BEGIN
+    // Main execution
+    CALL printMessage()
+
+    // Call integer version of add
+    int_sum = CALL add(10, 25)
+    PRINT "Sum of integers: " + int_sum
+
+    // Call double version of add
+    double_sum = CALL add(5.5, 4.4)
+    PRINT "Sum of doubles: " + double_sum
+END
+
+// Function Definitions
+FUNCTION printMessage():
+    PRINT "This is a message from a function."
+END FUNCTION
+
+FUNCTION add(integer a, integer b):
+    RETURN a + b
+END FUNCTION
+
+FUNCTION add(double a, double b):
+    RETURN a + b
+END FUNCTION
+```
+
+## Flowchart
+
+```mermaid
+graph TD;
+    subgraph "Main Program"
+        A[Start] --> B[CALL printMessage];
+        B --> C[CALL add(10, 25)];
+        C --> D{Display integer sum};
+        D --> E[CALL add(5.5, 4.4)];
+        E --> F{Display double sum};
+        F --> G[End];
+    end
+
+    subgraph "Function: printMessage"
+        P1[Begin] --> P2{Display message};
+        P2 --> P3[Return];
+    end
+
+    subgraph "Function: add (Overloaded)"
+        ADD_I1[Begin (int)] --> ADD_I2[Return a + b];
+        ADD_D1[Begin (double)] --> ADD_D2[Return a + b];
+    end
+
+    B --> P1;
+    C --> ADD_I1;
+    E --> ADD_D1;
+```

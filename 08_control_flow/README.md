@@ -70,3 +70,68 @@ do {
 
 std::cout << "   Exited the loop cleanly." << std::endl;
 ```
+
+## Pseudocode
+
+```xml
+BEGIN
+    // Break example
+    PRINT "Loop with break:"
+    FOR i from 1 to 10
+        IF i == 5 THEN
+            PRINT "Breaking the loop"
+            BREAK
+        END IF
+        PRINT "i = " + i
+    END FOR
+
+    // Continue example
+    PRINT "Loop with continue:"
+    FOR j from 1 to 10
+        IF j is even THEN
+            CONTINUE // Skip to next iteration
+        END IF
+        PRINT "j = " + j
+    END FOR
+
+    // goto replacement (do-while) example
+    PRINT "Input loop:"
+    DO
+        PROMPT "Enter a number (0 to exit)"
+        READ input
+        IF input != 0 THEN
+            PRINT "You entered " + input
+        END IF
+    WHILE input != 0
+END
+```
+
+## Flowcharts
+
+### Loop with `break`
+
+```mermaid
+graph TD;
+    A[Start] --> B[i = 1];
+    B --> C{i <= 10?};
+    C -- False --> H[End];
+    C -- True --> D{i == 5?};
+    D -- True --> G[BREAK];
+    D -- False --> E{Display "i = " + i};
+    E --> F[i++ GOTO C];
+    G --> H;
+```
+
+### Loop with `continue`
+
+```mermaid
+graph TD;
+    A[Start] --> B[j = 1];
+    B --> C{j <= 10?};
+    C -- False --> H[End];
+    C -- True --> D{j is even?};
+    D -- True --> G[CONTINUE GOTO F];
+    D -- False --> E{Display "j = " + j};
+    E --> F[j++ GOTO C];
+    G --> F;
+```

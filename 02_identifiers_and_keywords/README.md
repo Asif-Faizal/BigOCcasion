@@ -57,3 +57,26 @@ In the example code, `int`, `float`, and `return` are keywords. C++ has signific
 | `do` | `long` | `struct` | `while` |
 | `double` | `mutable` | `switch` | `namespace` |
 | `dynamic_cast` | `template`| | |
+
+## Pseudocode
+
+```xml
+BEGIN
+    DECLARE INTEGER marks = 85
+    DECLARE FLOAT percentage = 91.5f
+
+    PRINT "Marks = " + marks
+    PRINT "Percentage = " + formatted percentage + "%"
+END
+```
+
+## Flowchart
+
+```mermaid
+graph TD;
+    A[Start] --> B[Declare marks = 85];
+    B --> C[Declare percentage = 91.5f];
+    C --> D{Display marks};
+    D --> E{Display formatted percentage};
+    E --> F[End];
+```

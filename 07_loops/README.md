@@ -122,3 +122,68 @@ for (int num = 1; num <= 10; num++) {
 | **Condition Check**| Entry-Controlled | Entry-Controlled | Exit-Controlled | (Handled internally) |
 | **Safety** | Risk of off-by-one errors with index. | Risk of infinite loops if condition is not updated. | Risk of infinite loops. | Safest; no manual index or condition management. |
 | **Readability** | Good for simple counting loops. | Good for condition-based loops. | Clear when "at least once" logic is needed. | Excellent for simple iteration. |
+
+## Pseudocode
+
+```xml
+BEGIN
+    // For Loop
+    FOR i from 1 to 5
+        PRINT "i = " + i
+    END FOR
+
+    // While Loop
+    DECLARE j = 3
+    WHILE j > 0
+        PRINT "j = " + j
+        DECREMENT j
+    END WHILE
+
+    // Do-While Loop
+    DECLARE k = 5
+    DO
+        PRINT "This runs at least once. k = " + k
+    WHILE k < 3
+
+    // Range-Based For Loop
+    DECLARE numbers = {10, 20, 30, 40, 50}
+    FOR EACH number IN numbers
+        PRINT "Value: " + number
+    END FOR
+END
+```
+
+## Flowcharts
+
+### For Loop
+
+```mermaid
+graph TD;
+    A[Start] --> B[i = 1];
+    B --> C{i <= 5?};
+    C -- True --> D{Display "i = " + i};
+    D --> E[i++ GOTO C];
+    C -- False --> F[End];
+```
+
+### While Loop
+
+```mermaid
+graph TD;
+    A[Start] --> B[j = 3];
+    B --> C{j > 0?};
+    C -- True --> D{Display "j = " + j};
+    D --> E[j-- GOTO C];
+    C -- False --> F[End];
+```
+
+### Do-While Loop
+
+```mermaid
+graph TD;
+    A[Start] --> B[k = 5];
+    B --> C{Display "k = " + k};
+    C --> D{k < 3?};
+    D -- True --> C;
+    D -- False --> E[End];
+```
