@@ -4,7 +4,7 @@
 
 // Pass-by-value: The function gets a *copy* of the variable's value.
 // Changes made to the parameter inside the function do not affect the original variable.
-void cannotChange(int x) {
+void cannotChange([[maybe_unused]] int x) {
     x = 100; // This only changes the local copy 'x'.
 }
 
