@@ -45,14 +45,14 @@ END
 ```mermaid
 graph TD;
     A[Start] --> B[Declare variables: n, sum=0, i]
-    B --> C[Print "Enter a number:"]
+    B --> C[Print Enter a number]
     C --> D[Input n]
     D --> E[Initialize i = 1]
     E --> F{i <= n?}
     F -- Yes --> G[sum = sum + i]
     G --> H[i = i + 1]
     H --> F
-    F -- No --> I[Print "Sum of first n natural numbers is sum"]
+    F -- No --> I[Print result]
     I --> J[End]
 ```
 

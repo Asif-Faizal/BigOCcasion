@@ -26,17 +26,7 @@ for project_dir in $(find . -maxdepth 1 -type d -name '*_*' | sort -t '_' -k 1 -
         # Compile the C++ program
         # Note: CXXFLAGS is not in quotes so that it's treated as multiple arguments
         "$CXX" $CXXFLAGS -o "$executable" "$main_file"
-        echo "$CXX" $CXXFLAGS -o "$executable" "$main_file"
-        
-        # Check if compilation was successful
-        # if [ $? -eq 0 ]; then
-        #     # Run the executable
-        #     "$executable"
-        # else
-        #     echo "Compilation failed for $main_file"
-        # fi
-        # echo "----------------------------------------"
-        # echo ""
+        # echo "$CXX" $CXXFLAGS -o "$executable" "$main_file"
     fi
 done
 
